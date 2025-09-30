@@ -28,10 +28,7 @@ export class FetchError extends Error {
   }
 }
 
-export default async function fetchJson<JSON = unknown>(
-  input: string,
-  init?: RequestInit,
-): Promise<JSON> {
+export default async function fetchJson<JSON = unknown>(input: string, init?: RequestInit): Promise<JSON> {
   const response = await fetch(input, {
     ...init,
     headers: {

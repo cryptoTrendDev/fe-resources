@@ -8,18 +8,13 @@ export type TSEO = {
 };
 
 const defaultSEO: TSEO = {
-  title: "FE Shadcn Template",
-  description: "FE Shadcn Template",
+  title: "FE Resources",
+  description: "FE Resources is a collection of useful front-end resources, tools, and libraries for developers.",
   thumbnail: "/share_cover.png",
   keywords: [],
 };
 
-export function generateMetadata({
-  title,
-  description,
-  thumbnail,
-  keywords,
-}: Partial<TSEO> = {}): Metadata {
+export function generateMetadata({ title, description, thumbnail, keywords }: Partial<TSEO> = {}): Metadata {
   return {
     title: title ?? defaultSEO.title,
     description: description ?? defaultSEO.description,

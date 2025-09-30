@@ -8,10 +8,8 @@ export class ContractNotFoundError extends Error {
 
 export function getErrorMessage(error: any): string {
   if (error instanceof AxiosError) {
-    if (typeof error.response?.data?.message === "string")
-      return error.response.data.message;
-    if (typeof error.response?.data?.error === "string")
-      return error.response.data.error;
+    if (typeof error.response?.data?.message === "string") return error.response.data.message;
+    if (typeof error.response?.data?.error === "string") return error.response.data.error;
   }
   if (typeof error?.reason === "string") return error.reason;
   if (typeof error?.shortMessage === "string") return error.shortMessage;

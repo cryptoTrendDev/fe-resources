@@ -1,12 +1,13 @@
 import "./globals.css";
 
+import { AppSidebar } from "@/components/app-sidebar";
 import AppProviders from "@/components/AppProviders";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
+import ViewSource from "@/components/view-source";
 import { generateMetadata } from "@/utils/seo";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <AppProviders>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="flex-1 relative">
+              <div className="flex gap-3">
+                <SidebarTrigger />
+                <ViewSource />
+              </div>
+              {children}
+            </main>
+          </SidebarProvider>
           <Toaster
             duration={8000}
             position="top-center"
